@@ -2,4 +2,4 @@
 config.json
 
 # Database
-/src/database/mongoose.js
+/src/database/
