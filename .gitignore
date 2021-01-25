@@ -1,5 +1,6 @@
 # Files
 config.json
+.eslintrc.json
 
 # Database
 /src/database/
