@@ -17,13 +17,11 @@ module.exports = class extends Listener {
 		});
 
 		if (votes) {
-			this.client.on('message', async (message) => {
+			this.client.on('message', (message) => {
 				if (message.channel.id === votes.channelID) {
-					await message.react('<:upvote:737422006525624452>');
-					await message.react('<:downvote:737422054533496873>');
+					message.react('<:upvote:737422006525624452>');
+					message.react('<:downvote:737422054533496873>');
 				}
-
-				if (message.type === 'PINS_ADD' && message.author.bot) message.delete();
 			});
 
 			this.client.on('messageReactionAdd', async (reaction) => {

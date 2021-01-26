@@ -8,6 +8,8 @@ module.exports = class extends Event {
 		const mentionRegex = RegExp(`^<@!?${this.client.user.id}>$`);
 		const mentionRegexPrefix = RegExp(`^<@!?${this.client.user.id}> `);
 
+		if (message.type === 'PINS_ADD' && message.author.bot) message.delete();
+
 		if (!message.guild || message.author.bot) return;
 
 		const settings = await Guild.findOne({
