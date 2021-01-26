@@ -1,6 +1,7 @@
 # Files
 config.json
 .eslintrc.json
+node_modules
 
 # Database
 /src/database/

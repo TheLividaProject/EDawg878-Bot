@@ -18,7 +18,7 @@ module.exports = class extends Command {
 	async run(message, args) {
 		const { channel, guild } = message;
 
-		const toggling = ['votes', 'channel', 'disable'];
+		const toggling = ['votes', 'channel', 'todo', 'disable'];
 		if (!toggling.includes(args[0])) {
 			const embed = new MessageEmbed()
 				.setAuthor('Admin Settings Commands')
@@ -60,6 +60,27 @@ module.exports = class extends Command {
 				});
 
 				channel.send(`Channel has been set for ${VotesChannel}`);
+			}
+
+			if (!VotesChannel) {
+				channel.send(`This is not a text channel..`);
+			}
+		}
+
+		if (args[0] === 'todo') {
+			const VotesChannel = message.mentions.channels.first();
+
+			if (VotesChannel.type === 'text') {
+				await UpVotesSchema.findOneAndUpdate({
+					_id: guild.id
+				}, {
+					_id: guild.id,
+					ToDoChannelID: VotesChannel.id
+				}, {
+					upsert: true
+				});
+
+				channel.send(`To Do List has been set for ${VotesChannel}`);
 			}
 
 			if (!VotesChannel) {

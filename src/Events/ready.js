@@ -19,8 +19,8 @@ module.exports = class extends Event {
 			`${this.client.user.tag} is running in ${this.client.guilds.cache.size} Servers.`
 		].join('\n'));
 		const statuses = [
-			`${this.client.guilds.cache.size} servers! | -help`,
-			`edawg878.com | -help`
+			`${this.client.guilds.cache.reduce((a, b) => a + b.memberCount, 0).toLocaleString()} Edawgers!`,
+			`play.edawg878.com | -help`
 		];
 
 		setInterval(() => {
@@ -33,6 +33,10 @@ module.exports = class extends Event {
 
 		const boop = [], animated = [];
 		guild.emojis.cache.forEach(emoji => emoji.animated ? animated.push([emoji.id, emoji.name]) : boop.push([emoji.id, emoji.name]));
+
+		// const guilds = this.client.guilds.cache.get('734219399925334106');
+
+		// guilds.emojis.cache.forEach(emoji => emoji.animated ? animated.push([emoji.id, emoji.name]) : boop.push([emoji.id, emoji.name]));
 	}
 
 };

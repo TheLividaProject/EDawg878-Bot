@@ -9,7 +9,8 @@ const reqString = {
 const UpVotesSchema = mongoose.Schema({
 	_id: reqString,
 	upvotes: reqString,
-	channelID: String
+	channelID: String,
+	ToDoChannelID: String
 });
 
 module.exports = mongoose.model('Upvotes', UpVotesSchema);
