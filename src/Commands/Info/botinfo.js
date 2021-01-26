@@ -36,7 +36,7 @@ module.exports = class extends Command {
 				{ name: 'Created', value: `${utc(this.client.user.createdTimestamp).format('Do MMMM YYYY HH:mm:ss')}`, inline: true },
 				{ name: 'Ping', value: `${latency}ms`, inline: true },
 				{ name: 'Shards', value: `${this.client.shard.count}`, inline: true },
-				{ name: '\u200b', value: `[Edawg Development Team](https://edawg878.com)` }
+				{ name: '\u200b', value: `Made by TheLividaProject#4397` }
 			);
 		msg.edit(embed);
 	}

@@ -50,7 +50,7 @@ module.exports = class extends Event {
 		if (command) {
 			const evaldeny = new MessageEmbed()
 				.setAuthor(`${message.author.tag}`)
-				.setDescription('❌ **Access Denied**\n\nSorry this command is only for [Edawg Development Team](https://edawg878.com)')
+				.setDescription('❌ **Access Denied**\n\nSorry this command is only for TheLividaProject#4397')
 				.setColor('RED');
 			if (command.owner && !this.client.utils.checkOwner(message.author.id)) {
 				// eslint-disable-next-line consistent-return
