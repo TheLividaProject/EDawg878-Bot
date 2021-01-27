@@ -1,0 +1,8 @@
+{
+    "prefix": "<prefix>",
+    "owners": ["<Your Discord ID>"],
+    "token": "<Your Bot Token>",
+    "defaultPerms": [],
+
+    "EDawagServerAPI": "<API Token ff needed>"
+}
