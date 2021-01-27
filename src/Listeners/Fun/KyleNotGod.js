@@ -9,24 +9,42 @@ module.exports = class extends Listener {
 	}
 
 	async run() {
+		var normalmessages = [
+			`kyle is a god`,
+			`kyle is god`,
+			`Kyle is @ god`
+		];
+
+		var kylemessages = [
+			`i am a god`,
+			`i am god`
+		];
+
+		var nogod = [
+			`Kyle is not a god!`,
+			`Kyle is not god!`,
+			`You're not a god, be a good dog and sit.`,
+			`You're not my god, you're just a dog`
+		];
+
+		var random = nogod[Math.floor(Math.random() * nogod.length)];
+
 		this.client.on('message', async (message) => {
 			if (message.author.bot) return;
 
-			if (message.content.toLowerCase().includes('kyle is a god')) {
-				message.reply('Kyle is not a god!');
-			}
+			const { content } = message;
 
-			if (message.content.toLowerCase().includes('kyle is god')) {
-				message.reply('Kyle is not god!');
+			for (let i = 0; i < normalmessages.length; i++) {
+				if (content.toLowerCase().includes(normalmessages[i])) {
+					message.reply(random);
+				}
 			}
 
 			if (message.author.id === '320974316542099456') {
-				if (message.content.toLowerCase().includes('i am a god')) {
-					message.reply(`You're not a god, be a good dog and sit.`);
-				}
-
-				if (message.content.toLowerCase().includes('i am god')) {
-					message.reply(`You're not a god, be a good dog and sit.`);
+				for (let i = 0; i < kylemessages.length; i++) {
+					if (content.includes(kylemessages[i])) {
+						message.reply(random);
+					}
 				}
 			}
 		});
