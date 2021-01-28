@@ -17,14 +17,16 @@ module.exports = class extends Listener {
 
 		var kylemessages = [
 			`i am a god`,
-			`i am god`
+			`i am god`,
+			`i @m a god`,
+			`i am @ god`
 		];
 
 		var nogod = [
 			`Kyle is not a god!`,
 			`Kyle is not god!`,
-			`You're not a god, be a good dog and sit.`,
-			`You're not my god, you're just a dog`
+			`Kyle will never be my god, be a good dog and sit.`,
+			`If Kyle was a god, he would be a trash one, you're just a dog so sit already!`
 		];
 
 		var random = nogod[Math.floor(Math.random() * nogod.length)];
@@ -42,7 +44,7 @@ module.exports = class extends Listener {
 
 			if (message.author.id === '320974316542099456') {
 				for (let i = 0; i < kylemessages.length; i++) {
-					if (content.includes(kylemessages[i])) {
+					if (content.toLowerCase().includes(kylemessages[i])) {
 						message.reply(random);
 					}
 				}

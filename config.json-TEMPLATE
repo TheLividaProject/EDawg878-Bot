@@ -4,5 +4,5 @@
     "token": "<Your Bot Token>",
     "defaultPerms": [],
 
-    "EDawagServerAPI": "<API Token ff needed>"
+    "EDawagServerAPI": "<API Token if needed>"
 }
