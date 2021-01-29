@@ -23,6 +23,7 @@ module.exports = class extends Listener {
 				if (message.channel.id === votes.channelID) {
 					message.react('<:upvote:737422006525624452>');
 					message.react('<:downvote:737422054533496873>');
+					message.react('❓');
 				}
 			});
 

@@ -19,14 +19,15 @@ module.exports = class extends Listener {
 			`i am a god`,
 			`i am god`,
 			`i @m a god`,
-			`i am @ god`
+			`i am @ god`,
+			`i am a g0d`
 		];
 
 		var nogod = [
 			`Kyle is not a god!`,
 			`Kyle is not god!`,
-			`Kyle will never be my god, be a good dog and sit.`,
-			`If Kyle was a god, he would be a trash one, you're just a dog so sit already!`
+			`Kyle will never be my god, Kyle needs to be a good dog and sit.`,
+			`If Kyle was a god, he would be a trash one, because he is a dog, just sit down already!`
 		];
 
 		var random = nogod[Math.floor(Math.random() * nogod.length)];

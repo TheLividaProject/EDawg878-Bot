@@ -9,19 +9,19 @@ module.exports = class extends Listener {
 	}
 
 	async run() {
-		var catclan = [
-			`cats clan`,
-			`cat clan`
-		];
-
-
 		this.client.on('message', async (message) => {
 			if (message.author.bot) return;
 
-			for (let i = 0; i < catclan.length; i++) {
-				if (message.content.toLowerCase().includes(catclan[i])) {
-					message.react('🐱');
-				}
+			var kisses = [
+				`😘`,
+				`😚`,
+				`😗`
+			];
+
+			var random = kisses[Math.floor(Math.random() * kisses.length)];
+
+			if (message.content.toLowerCase().includes('now kiss')) {
+				message.react(random);
 			}
 		});
 	}
