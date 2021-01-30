@@ -6,7 +6,7 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			description: 'Changes prefix for the Guild',
-			category: 'Config',
+			category: 'Admin',
 			usage: '<prefix>',
 			userPerms: ['MANAGE_GUILD']
 		});

@@ -39,7 +39,7 @@ module.exports = class extends Event {
 			);
 
 		if (message.content.match(mentionRegex)) message.channel.send(embed);
-
+//
 		const prefix = message.content.match(mentionRegexPrefix) ?
 			message.content.match(mentionRegexPrefix)[0] : settings.prefix;
 
