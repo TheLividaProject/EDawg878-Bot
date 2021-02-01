@@ -39,45 +39,47 @@ module.exports = class extends Event {
 			);
 
 		if (message.content.match(mentionRegex)) message.channel.send(embed);
-//
-		const prefix = message.content.match(mentionRegexPrefix) ?
-			message.content.match(mentionRegexPrefix)[0] : settings.prefix;
 
-		if (!message.content.startsWith(prefix)) return;
+		if (message.channel.id === '674116852900823059') {
+			const prefix = message.content.match(mentionRegexPrefix) ?
+				message.content.match(mentionRegexPrefix)[0] : settings.prefix;
 
-		// eslint-disable-next-line no-unused-vars
-		const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
+			if (!message.content.startsWith(prefix)) return;
 
-		const command = this.client.commands.get(cmd.toLowerCase()) || this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()));
-		if (command) {
-			const evaldeny = new MessageEmbed()
-				.setAuthor(`${message.author.tag}`)
-				.setDescription('❌ **Access Denied**\n\nSorry this command is only for TheLividaProject#4397')
-				.setColor('RED');
-			if (command.owner && !this.client.utils.checkOwner(message.author.id)) {
+			// eslint-disable-next-line no-unused-vars
+			const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
+
+			const command = this.client.commands.get(cmd.toLowerCase()) || this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()));
+			if (command) {
+				const evaldeny = new MessageEmbed()
+					.setAuthor(`${message.author.tag}`)
+					.setDescription('❌ **Access Denied**\n\nSorry this command is only for TheLividaProject#4397')
+					.setColor('RED');
+				if (command.owner && !this.client.utils.checkOwner(message.author.id)) {
 				// eslint-disable-next-line consistent-return
-				return message.channel.send(evaldeny);
-			}
-
-			const userPermCheck = command.userPerms ? this.client.defaultPerms.add(command.userPerms) : this.client.defaultPerms;
-			if (userPermCheck) {
-				const missing = message.channel.permissionsFor(message.member).missing(userPermCheck);
-				if (missing.length) {
-					// eslint-disable-next-line consistent-return
-					return message.channel.send(`You don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
+					return message.channel.send(evaldeny);
 				}
-			}
 
-			const botPermCheck = command.botPerms ? this.client.defaultPerms.add(command.botPerms) : this.client.defaultPerms;
-			if (botPermCheck) {
-				const missing = message.channel.permissionsFor(this.client.user).missing(botPermCheck);
-				if (missing.length) {
+				const userPermCheck = command.userPerms ? this.client.defaultPerms.add(command.userPerms) : this.client.defaultPerms;
+				if (userPermCheck) {
+					const missing = message.channel.permissionsFor(message.member).missing(userPermCheck);
+					if (missing.length) {
 					// eslint-disable-next-line consistent-return
-					return message.channel.send(`I don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
+						return message.channel.send(`You don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
+					}
 				}
-			}
 
-			command.run(message, args);
+				const botPermCheck = command.botPerms ? this.client.defaultPerms.add(command.botPerms) : this.client.defaultPerms;
+				if (botPermCheck) {
+					const missing = message.channel.permissionsFor(this.client.user).missing(botPermCheck);
+					if (missing.length) {
+					// eslint-disable-next-line consistent-return
+						return message.channel.send(`I don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
+					}
+				}
+
+				command.run(message, args);
+			}
 		}
 	}
 

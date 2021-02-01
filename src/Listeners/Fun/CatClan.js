@@ -11,7 +11,8 @@ module.exports = class extends Listener {
 	async run() {
 		var catclan = [
 			`cats`,
-			`cat`
+			`cat`,
+			'cat clan'
 		];
 
 
