@@ -14,7 +14,6 @@ module.exports = class extends Command {
 		});
 	}
 
-
 	// eslint-disable-next-line consistent-return
 	async run(message, args) {
 		const { channel, guild } = message;

@@ -8,8 +8,8 @@ const reqString = {
 // eslint-disable-next-line new-cap
 const BotSettingsSchema = mongoose.Schema({
 	_id: reqString,
-	BotID: reqString,
-	CommandonlyID: reqString
+	CommandonlyID: String,
+	NitroPerksID: String
 });
 
 module.exports = mongoose.model('botsettings', BotSettingsSchema);
