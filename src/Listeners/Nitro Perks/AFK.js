@@ -28,7 +28,7 @@ module.exports = class extends Listener {
 				embed.setAuthor(`${target.tag} is AFK`, target.displayAvatarURL({ dynamic: true, size: 512 }));
 				embed.setFooter(`${target.tag} was requested by ${message.author.username}`);
 				embed.setColor(message.guild.me.displayHexColor || 'GREEN');
-				embed.setDescription(`\`${result.reasons}\``);
+				embed.setDescription(`\`${result.reasons.slice(0, 100)}\``);
 				embed.setTimestamp();
 
 				message.channel.send(embed);
