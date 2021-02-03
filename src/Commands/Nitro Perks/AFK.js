@@ -72,7 +72,11 @@ module.exports = class extends Command {
 					}
 				}
 			} else if (!member.roles.cache.has(role)) {
-				message.channel.send('This command requires Nitro!');
+				const embed = new MessageEmbed()
+					.setTitle('Access Denied')
+					.setDescription(`This command requires <@${boost.NitroPerksID}>!`);
+
+				message.channel.send(embed);
 			}
 		}
 	}

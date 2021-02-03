@@ -1,10 +1,18 @@
+/* eslint-disable complexity */
+/* eslint-disable max-depth */
 const Event = require('../../Structures/Event.js');
 const Guild = require('../../models/guild');
 const { MessageEmbed } = require('discord.js');
 
+const BotSettingsSchema = require('../../models/BotSettings');
+
 module.exports = class extends Event {
 
 	async run(message) {
+		const comnmandonly = await BotSettingsSchema.findOne({
+			_id: message.guild.id
+		});
+
 		const mentionRegex = RegExp(`^<@!?${this.client.user.id}>$`);
 		const mentionRegexPrefix = RegExp(`^<@!?${this.client.user.id}> `);
 
@@ -40,7 +48,7 @@ module.exports = class extends Event {
 
 		if (message.content.match(mentionRegex)) message.channel.send(embed);
 
-		if (message.channel.id === '674116852900823059') {
+		if (!comnmandonly) {
 			const prefix = message.content.match(mentionRegexPrefix) ?
 				message.content.match(mentionRegexPrefix)[0] : settings.prefix;
 
@@ -56,7 +64,7 @@ module.exports = class extends Event {
 					.setDescription('❌ **Access Denied**\n\nSorry this command is only for TheLividaProject#4397')
 					.setColor('RED');
 				if (command.owner && !this.client.utils.checkOwner(message.author.id)) {
-				// eslint-disable-next-line consistent-return
+					// eslint-disable-next-line consistent-return
 					return message.channel.send(evaldeny);
 				}
 
@@ -64,7 +72,7 @@ module.exports = class extends Event {
 				if (userPermCheck) {
 					const missing = message.channel.permissionsFor(message.member).missing(userPermCheck);
 					if (missing.length) {
-					// eslint-disable-next-line consistent-return
+						// eslint-disable-next-line consistent-return
 						return message.channel.send(`You don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
 					}
 				}
@@ -73,12 +81,56 @@ module.exports = class extends Event {
 				if (botPermCheck) {
 					const missing = message.channel.permissionsFor(this.client.user).missing(botPermCheck);
 					if (missing.length) {
-					// eslint-disable-next-line consistent-return
+						// eslint-disable-next-line consistent-return
 						return message.channel.send(`I don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
 					}
 				}
 
 				command.run(message, args);
+			}
+		}
+
+		if (comnmandonly) {
+			if (message.channel.id === comnmandonly.CommandonlyID) {
+				const prefix = message.content.match(mentionRegexPrefix) ?
+					message.content.match(mentionRegexPrefix)[0] : settings.prefix;
+
+				if (!message.content.startsWith(prefix)) return;
+
+				// eslint-disable-next-line no-unused-vars
+				const [cmd, ...args] = message.content.slice(prefix.length).trim().split(/ +/g);
+
+				const command = this.client.commands.get(cmd.toLowerCase()) || this.client.commands.get(this.client.aliases.get(cmd.toLowerCase()));
+				if (command) {
+					const evaldeny = new MessageEmbed()
+						.setAuthor(`${message.author.tag}`)
+						.setDescription('❌ **Access Denied**\n\nSorry this command is only for TheLividaProject#4397')
+						.setColor('RED');
+					if (command.owner && !this.client.utils.checkOwner(message.author.id)) {
+						// eslint-disable-next-line consistent-return
+						return message.channel.send(evaldeny);
+					}
+
+					const userPermCheck = command.userPerms ? this.client.defaultPerms.add(command.userPerms) : this.client.defaultPerms;
+					if (userPermCheck) {
+						const missing = message.channel.permissionsFor(message.member).missing(userPermCheck);
+						if (missing.length) {
+							// eslint-disable-next-line consistent-return
+							return message.channel.send(`You don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
+						}
+					}
+
+					const botPermCheck = command.botPerms ? this.client.defaultPerms.add(command.botPerms) : this.client.defaultPerms;
+					if (botPermCheck) {
+						const missing = message.channel.permissionsFor(this.client.user).missing(botPermCheck);
+						if (missing.length) {
+							// eslint-disable-next-line consistent-return
+							return message.channel.send(`I don't have Required Permissions for this command, Missing Permission: ${this.client.utils.formatArray(missing.map(this.client.utils.formatPerms))}`);
+						}
+					}
+
+					command.run(message, args);
+				}
 			}
 		}
 	}
