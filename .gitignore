@@ -4,4 +4,4 @@ config.json
 node_modules
 
 # Database
-/src/database/
+/src/database/mongoose.js
