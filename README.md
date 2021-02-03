@@ -7,7 +7,10 @@
 
 ## About
 
-I made this bot while I was working on EDawg878, this bot just adds auto publish for news channels, Suggestion upvotes system, some Nitro Perks too
+I made this bot while I was working on EDawg878, this bot just adds the following features:
+ * Auto Posts for news channels
+ * Upvotes suggestion feature
+ * Nitro exclusive perks
 
 ## Commands
 <img src="https://cdn.discordapp.com/attachments/572120574596349983/806396091792621588/KVua9WuhMEpCABCQgAQm0SIHKoJB6xw9EH1fWUkFhRbZX6qUBCQgAQlIwGsCbW65BYulHW0ig784f5bfyDrju8rZxUUFLzWDzqRB.png" alt="Commands" />
