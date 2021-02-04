@@ -13,7 +13,7 @@ I made this bot while I was working on EDawg878, this bot just adds the followin
  * Nitro exclusive perks
 
 ## Commands
-<img src="https://cdn.discordapp.com/attachments/572120574596349983/806396091792621588/KVua9WuhMEpCABCQgAQm0SIHKoJB6xw9EH1fWUkFhRbZX6qUBCQgAQlIwGsCbW65BYulHW0ig784f5bfyDrju8rZxUUFLzWDzqRB.png" alt="Commands" />
+<img src="https://cdn.discordapp.com/attachments/572120574596349983/806742888092008468/wPCw473t48MOgAAAABJRU5ErkJggg.png" alt="Commands" />
 
 ## LCN Development Team
 
