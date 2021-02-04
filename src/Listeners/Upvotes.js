@@ -19,18 +19,18 @@ module.exports = class extends Listener {
 		});
 
 		if (votes) {
-			this.client.on('message', (message) => {
+			this.client.on('message', async (message) => {
 				if (message.channel.id === votes.channelID) {
-					message.react('<:upvote:737422006525624452>');
-					message.react('<:downvote:737422054533496873>');
-					message.react('❓');
+					await message.react('<:upvote:737422006525624452>');
+					await message.react('<:downvote:737422054533496873>');
+					await message.react('❓');
 				}
 			});
 
 			this.client.on('messageReactionAdd', async (reaction) => {
 				const limit = `${votes.upvotes}`;
 
-				if (reaction.message.id === votes.channelID) {
+				if (reaction.message.channel.id === votes.channelID) {
 					if (reaction.emoji.name === 'upvote' && Number(limit) === reaction.count) {
 						reaction.message.pin({ reason: `Hit the required upvotes - ${votes.upvotes}` });
 

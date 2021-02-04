@@ -20,7 +20,9 @@ module.exports = class extends Listener {
 			`i am god`,
 			`i @m a god`,
 			`i am @ god`,
-			`i am a g0d`
+			`i am a g0d`,
+			`1 am a god	`,
+			`1 am god`
 		];
 
 		var nogod = [

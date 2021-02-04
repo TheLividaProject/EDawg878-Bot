@@ -41,7 +41,12 @@ module.exports = class extends Command {
 					upsert: true
 				});
 
-				channel.send(`Exclusive Perks has now been set to ${nitro}`);
+				const embed = new MessageEmbed()
+					.setTitle('Exclusive Perks')
+					.setDescription(`Exclusive Perks has now been set to ${nitro}`)
+					.setColor('RANDOM');
+
+				channel.send(embed);
 			}
 
 			if (!nitro) {

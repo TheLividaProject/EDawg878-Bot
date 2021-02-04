@@ -20,7 +20,7 @@ module.exports = class extends Listener {
 
 			var random = kisses[Math.floor(Math.random() * kisses.length)];
 
-			if (message.content.toLowerCase().includes('now kiss')) {
+			if (message.content.toLowerCase() === 'now kiss') {
 				message.react(random);
 			}
 		});

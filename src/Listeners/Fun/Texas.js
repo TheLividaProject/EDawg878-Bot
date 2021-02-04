@@ -12,7 +12,7 @@ module.exports = class extends Listener {
 		this.client.on('message', async (message) => {
 			if (message.author.bot) return;
 
-			if (message.content.toLowerCase().includes('texas')) {
+			if (message.content.toLowerCase() === 'texas') {
 				// eslint-disable-next-line no-unused-expressions
 				Math.random() < 0.5 ? message.react('<:Texas:640608092404318211>') : message.react('<:texasmap:650568679104446475>');
 			}
