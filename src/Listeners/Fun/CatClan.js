@@ -10,8 +10,6 @@ module.exports = class extends Listener {
 
 	async run() {
 		var catclan = [
-			`cats`,
-			`cat`,
 			'cat clan'
 		];
 
@@ -20,7 +18,7 @@ module.exports = class extends Listener {
 			if (message.author.bot) return;
 
 			for (let i = 0; i < catclan.length; i++) {
-				if (message.content.toLowerCase() === catclan[i]) {
+				if (message.content.toLowerCase().includes(catclan[i])) {
 					message.react('🐱');
 				}
 			}

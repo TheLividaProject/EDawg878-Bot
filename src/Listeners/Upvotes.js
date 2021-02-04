@@ -1,3 +1,4 @@
+/* eslint-disable max-depth */
 const Listener = require('../Structures/Listener');
 
 const { MessageEmbed } = require('discord.js');
@@ -59,7 +60,7 @@ module.exports = class extends Listener {
 								upvotesdms: 'false'
 							});
 
-							// eslint-disable-next-line max-depth
+
 							if (!UpVotesDms) {
 								const { name } = reaction.message.guild;
 
@@ -76,7 +77,6 @@ module.exports = class extends Listener {
 								this.client.users.cache.get(member.user.id).send(upvoted);
 							}
 
-							// eslint-disable-next-line max-depth
 							if (UpVotesDms) {
 								return;
 							}
@@ -85,6 +85,10 @@ module.exports = class extends Listener {
 
 					if (reaction.emoji.name === 'downvote' && Number(limit) === reaction.count) {
 						reaction.message.unpin();
+					}
+
+					if (reaction.message.member.id) {
+						reaction.users.remove(reaction.message.member.id);
 					}
 				}
 			}
