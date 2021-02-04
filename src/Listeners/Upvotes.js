@@ -33,9 +33,9 @@ module.exports = class extends Listener {
 				_id: reaction.message.guild.id
 			});
 
-			const limit = `${votes.upvotes}`;
-
 			if (votes) {
+				const limit = `${votes.upvotes}`;
+
 				if (reaction.message.channel.id === votes.channelID) {
 					if (reaction.emoji.name === 'upvote' && Number(limit) === reaction.count) {
 						reaction.message.pin({ reason: `Hit the required upvotes - ${votes.upvotes}` });

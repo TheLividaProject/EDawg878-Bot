@@ -21,7 +21,7 @@ module.exports = class extends Listener {
 
 			for (let i = 0; i < dogclan.length; i++) {
 				if (message.content.toLowerCase() === dogclan[i]) {
-					message.react('<:doggy:806930755828711504>');
+					message.react('🐶');
 				}
 			}
 		});
