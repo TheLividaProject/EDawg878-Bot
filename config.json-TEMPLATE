@@ -4,5 +4,10 @@
     "token": "<Your Bot Token>",
     "defaultPerms": [],
 
+    "twitterConsumerKey": "<User Key>",
+    "twitterConsumerSecret": "<User Secret>",
+    "twitterToken": "<Twitter Token>",
+    "twitterSecret": "<Twitter Secret>",
+
     "EDawagServerAPI": "<API Token if needed>"
 }

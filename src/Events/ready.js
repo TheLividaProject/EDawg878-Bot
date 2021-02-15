@@ -29,14 +29,13 @@ module.exports = class extends Event {
 		}, 50000);
 
 		// Emojis
-		const guild = this.client.guilds.cache.get('734219399925334106');
+		const Guilds = this.client.guilds.cache.map(guild => guild.id);
 
-		const boop = [], animated = [];
-		guild.emojis.cache.forEach(emoji => emoji.animated ? animated.push([emoji.id, emoji.name]) : boop.push([emoji.id, emoji.name]));
-
-		const guilds = this.client.guilds.cache.get('509931628286443532');
-
-		guilds.emojis.cache.forEach(emoji => emoji.animated ? animated.push([emoji.id, emoji.name]) : boop.push([emoji.id, emoji.name]));
+		Guilds.forEach((guild) => {
+			const guilds = this.client.guilds.cache.get(guild);
+			const boop = [], animated = [];
+			guilds.emojis.cache.forEach(emoji => emoji.animated ? animated.push([emoji.id, emoji.name]) : boop.push([emoji.id, emoji.name]));
+		});
 	}
 
 };

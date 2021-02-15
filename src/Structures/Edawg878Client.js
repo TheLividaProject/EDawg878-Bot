@@ -15,6 +15,8 @@ module.exports = class Edawg878Client extends Client {
 		this.aliases = new Collection();
 		this.utils = new Util(this);
 
+		this.snipes = new Collection();
+
 		this.owners = options.owners;
 		this.mongoose = require('../database/mongoose');
 	}
