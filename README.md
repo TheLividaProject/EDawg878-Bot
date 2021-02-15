@@ -10,6 +10,7 @@
 I made this bot while I was working on EDawg878, this bot just adds the following features:
  * Auto Posts for news channels
  * Upvotes suggestion feature
+ * Ticket System
  * Nitro exclusive perks
 
 ## Commands
@@ -20,5 +21,6 @@ I made this bot while I was working on EDawg878, this bot just adds the followin
 * [Website](https://lividacraft.com)
 * [Discord Server](https://discord.gg/d8tHEhn)
 * [Github](https://github.com/LividaCraft)
+* [Twitter](https://twitter.com/PlayLividaCraft)
 * [YouTube](https://www.youtube.com/channel/UCbfEFMKw-OlLXyaFU12-9oQ)
 * [Twitch](https://www.twitch.tv/lividacraft)
