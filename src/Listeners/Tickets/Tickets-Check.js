@@ -1,5 +1,5 @@
 const Listener = require('../../Structures/Listener');
-const Ticket = require('../../models/Moderation/Ticket');
+const Ticket = require('../../models/Tickets/Ticket');
 
 module.exports = class extends Listener {
 
